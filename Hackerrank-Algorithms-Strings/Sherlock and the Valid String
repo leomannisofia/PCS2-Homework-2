@@ -1,0 +1,32 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'isValid' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING s as parameter.
+#
+from collections import Counter
+def isValid(s):
+    c = Counter(s)
+    val = sorted(c.values())
+    if (len(val) == 1) or (val[0] == val[-1]) or (val[0] == 1 and val[1] == val[-1]) or (val[0] == val[-2] and val[-2] == val[-1] - 1):
+        return 'YES'
+    return 'NO'
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = isValid(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
